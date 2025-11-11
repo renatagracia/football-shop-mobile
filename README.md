@@ -1,5 +1,4 @@
 # Tugas 7
-
 ## 1. Jelaskan apa itu widget tree pada Flutter dan bagaimana hubungan parent-child (induk-anak) bekerja antar widget.
 Widget tree pada Flutter adalah struktur hierarkis dari semua widget yang digunakan dalam aplikasi Flutter yang menggambarkan antarmuka pengguna (UI) sebuah aplikasi, dimana setiap widget dapat memiliki child/children.
 Parent widget adalah widget yang membungkus atau menaungi widget lain, sedangkan child widget adalah widget yang ditempatkan di dalam parent widget.
@@ -36,3 +35,25 @@ Di dalam metode build, BuildContext digunakan untuk mengkonfigurasi dan membangu
 ## 6. Jelaskan konsep "hot reload" di Flutter dan bagaimana bedanya dengan "hot restart".
 Hot Reload digunakan untuk mempercepat pengembangan karena perubahan UI langsung terlihat tanpa harus menjalankan ulang aplikasi sepenuhnya. Cara kerjanya yaitu dengan menyuntikkan berkas kode yang telah diedit langsung ke dalam mesin virtual (VM) Dart saat aplikasi berjalan. VM akan memperbarui kelas dengan versi baru, lalu framework Flutter akan membangun ulang pohon widget.
 Bedanya hot reload dengan hot restart adalah hot reload mempertahankan state dengan memperbarui kode dan langsung menerapkan perubahan ke aplikasi tanpa menghapus state yang sedang berjalan, sedangkan hot restart memulai ulang seluruh aplikasi dari awal, memuat ulang semua state dan variabel.
+
+# Tugas 8
+## 1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement() pada Flutter. Dalam kasus apa sebaiknya masing-masing digunakan pada aplikasi Football Shop kamu?
+Navigator.push() digunakan untuk menambahkan halaman baru di atas halaman sebelumnya di stack navigasi sehingga user bisa kembali ke halaman sebelumnya dengan tombol 'back', sedangkan
+Navigator.pushReplacement() digunakan untuk mengganti halaman saat ini dengan halaman baru tanpa menyimpannya di stack sehingga user tidak dapat kembali ke halaman sebelumnya dengan tombol 'back'.
+Pada aplikasi saya, pada bagian Add Product di product_card.dart menggunakan Navigator.push() agar user bisa mengisi form, lalu nanti bisa menekan tombol 'back' untuk kembali ke halaman utama.
+Lalu pada bagian Drawer di left_drawer.dart menggunakan Navigator.pushReplacement() agar kalau sudah memilih menu baru, halaman sebelumnya tidak perlu disimpan ke stack.
+
+## 2. Bagaimana kamu memanfaatkan hierarchy widget seperti Scaffold, AppBar, dan Drawer untuk membangun struktur halaman yang konsisten di seluruh aplikasi?
+Saya menggunakan struktur widget yang sama di semua halaman agar tampilannya konsisten.
+Scaffold sebagai struktur utama tiap halaman (tempat untuk AppBar, Drawer, dan body).
+AppBar untuk menampilkan judul halaman di bagian atas.
+Drawer berisi navigasi ke halaman lain sehingga user dapat berpindah antarhalaman dengan mudah tanpa perlu kembali ke Home terlebih dahulu.
+
+## 3. Dalam konteks desain antarmuka, apa kelebihan menggunakan layout widget seperti Padding, SingleChildScrollView, dan ListView saat menampilkan elemen-elemen form? Berikan contoh penggunaannya dari aplikasi kamu.
+Layout widget tersebut membuat tampilan form menjadi rapi, fleksibel, dan responsif.
+Padding berfungsi memberi jarak antarelemen agar tidak menempel satu sama lain. Contohnya di productlist_form.dart saya pakai Padding di setiap TextFormField agar inputnya punya ruang di sekelilingnya.
+SingleChildScrollView berfungsi agar form bisa discroll kalau isinya banyak, terutapa di layar kecil. Contohnya di productlist_form.dart seluruh form dibungkus dengan SingleChildScrollView agar semua input bisa diakses tanpa overflow.
+ListView berfungsi untuk memungkinkan elemen-elemen panjang bisa discroll secara vertikal. Contohnya di left_drawer.dart saya menggunakan ListView agar item navigasi di Drawer bisa discroll kalau isinya banyak.
+
+## 4. Bagaimana kamu menyesuaikan warna tema agar aplikasi Football Shop memiliki identitas visual yang konsisten dengan brand toko?
+Saya menggunakan ThemeData di main.dart untuk membuat warna tema utama aplikasi. Saya menggunakan warna biru sebagai warna utama di AppBar, tombol, dan Drawer agar identik dengan nuansa olahraga. Dengan tema ini, seluruh halaman punya identitas visual yang konsisten dan mudah dikenali sebagai warna khas "Football Shop".
